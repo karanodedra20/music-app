@@ -304,16 +304,7 @@
 </template>
 
 <script>
-import store from "@/store";
-
 export default {
   name: "manage",
-  beforeRouterEnter(to, from, next) {
-    if (store.state.userLoggedIn) {
-      next();
-    } else {
-      next({ name: "home" });
-    }
-  },
 };
 </script>
