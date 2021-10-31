@@ -65,8 +65,8 @@ export default {
     signout() {
       this.$store.dispatch("signout");
 
-      if (this.$router.name === "manage") {
-        // redirect to Home page, only if we are in manage page, else stay on the same page
+      if (this.$router.meta.requiresAuth) {
+        // redirect to Home page, if auth is required, else the user will stay on the same page
         this.$router.push({ name: "home" });
       }
     },
