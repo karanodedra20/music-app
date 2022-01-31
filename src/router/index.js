@@ -50,7 +50,6 @@ router.beforeEach((to, from, next) => {
     // proceed if user is logged in
     next();
   } else {
-    console.log("routes");
     next({ name: "home" });
   }
 });
