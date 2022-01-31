@@ -46,10 +46,11 @@ router.beforeEach((to, from, next) => {
     next();
     return;
   }
-  if (store.state.isLoggedIn) {
+  if (store.state.userLoggedIn) {
     // proceed if user is logged in
     next();
   } else {
+    console.log("routes");
     next({ name: "home" });
   }
 });
