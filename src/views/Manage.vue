@@ -244,12 +244,31 @@
 
 <script>
 import { defineComponent } from "vue";
+import { songsCollection, auth } from "@/includes/firebase";
 
 import AppUpload from "../components/Upload.vue";
 
 export default defineComponent({
   name: "manage",
   components: { AppUpload },
+  data() {
+    return {
+      songs: [],
+    };
+  },
+  async created() {
+    const snapshot = await songsCollection
+      .where("uid", "==", auth.currentUser.uid)
+      .get();
+
+    snapshot.forEach((document) => {
+      const song = {
+        ...document.data(),
+        docID: document.id,
+      };
+      this.songs.push(song);
+    });
+  },
   // beforeRouteLeave(to, from, next) { // cancel uploads when leaving the page
   //   this.$refs.upload.cancelUploads();
   //   next();
