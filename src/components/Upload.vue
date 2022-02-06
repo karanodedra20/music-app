@@ -127,6 +127,17 @@ export default defineComponent({
       });
       console.log(files);
     },
+    cancelUploads() {
+      this.uploads.forEach((upload) => {
+        upload.task.cancel();
+      });
+    },
+  },
+  beforeUnmount() {
+    // to cancel the uploads when we leave the page
+    this.uploads.forEach((upload) => {
+      upload.task.cancel();
+    });
   },
 });
 </script>

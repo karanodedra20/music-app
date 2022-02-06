@@ -2,7 +2,7 @@
   <section class="container mx-auto mt-6">
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1">
-        <app-upload />
+        <app-upload ref="upload" />
       </div>
       <div class="col-span-2">
         <div
@@ -250,5 +250,9 @@ import AppUpload from "../components/Upload.vue";
 export default defineComponent({
   name: "manage",
   components: { AppUpload },
+  // beforeRouteLeave(to, from, next) { // cancel uploads when leaving the page
+  //   this.$refs.upload.cancelUploads();
+  //   next();
+  // },
 });
 </script>
